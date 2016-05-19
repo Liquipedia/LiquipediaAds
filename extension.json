@@ -1,0 +1,32 @@
+{
+	"name": "LiquiFlowAds",
+	"version": "1.0",
+	"author": [
+		"Alex Winkler"
+	],
+	"url": "http://wiki.teamliquid.net/",
+	"descriptionmsg": "Allows to put ads in the LiquiFlow skin.",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.25.0"
+	},
+	"AutoloadClasses": {
+		"LiquiFlowAdsHooks": "LiquiFlowAdsHooks.php"
+	},
+	"Hooks": {
+		"LiquiFlowAdSidebar": [
+			"LiquiFlowAdsHooks::onLiquiFlowAdSidebar"
+		],
+		"LiquiFlowAdTop": [
+			"LiquiFlowAdsHooks::onLiquiFlowAdTop"
+		],
+		"LiquiFlowAdStartCode": [
+			"LiquiFlowAdsHooks::onLiquiFlowAdStartCode"
+		],
+		"LiquiFlowAdEndCode": [
+			"LiquiFlowAdsHooks::onLiquiFlowAdEndCode"
+		]
+	},
+	"manifest_version": 1
+}
