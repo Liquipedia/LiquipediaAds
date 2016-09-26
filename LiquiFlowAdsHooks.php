@@ -117,7 +117,6 @@ END_HTML;
 		if($rc->getSkin()->getSkinName() != 'liquiflow') {
 			return true;
 		}
-		global $btf_ad_code;
 		$adbox_code = "\n<div style=\"clear: both; height:110px; width:100%;\">$btf_ad_code</div>\n";
 		
 		$title = $parser->getTitle();
