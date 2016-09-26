@@ -28,7 +28,7 @@ class LiquiFlowAdsHooks {
 		if($rc->getSkin()->getSkinName() != 'liquiflow') {
 			return true;
 		}
-		$adbox_tag = "(((adbox)))";
+		$adbox_tag = "\n(((adbox)))\n";
 		
 		$title = $parser->getTitle();
 		if($title->getNamespace() != NS_MAIN) {
