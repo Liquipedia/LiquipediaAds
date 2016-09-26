@@ -26,6 +26,9 @@
 		],
 		"LiquiFlowAdEndCode": [
 			"LiquiFlowAdsHooks::onLiquiFlowAdEndCode"
+		],
+		"ParserBeforeStrip": [
+			"LiquiFlowAdsHooks::onParserBeforeStrip"
 		]
 	},
 	"manifest_version": 1
