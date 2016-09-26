@@ -158,7 +158,7 @@ END_HTML;
 END_HTML;
 			break;
 		}
-		$adbox_code = "\n<div style=\"clear: both; height:110px; width:100%;\">$btf_ad_code</div>\n";
+		$adbox_code = "\n<div style=\"clear: both; max-height:110px; width:100%;\">$btf_ad_code</div>\n";
 		$adbox_tag = '(((adbox)))';
 		$text = str_replace($adbox_tag, $adbox_code, $text);
 		return true;
