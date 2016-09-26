@@ -112,6 +112,10 @@ class LiquiFlowAdsHooks {
 		return true;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
+		$rc = new RequestContext;
+		if($rc->getSkin()->getSkinName() != 'liquiflow') {
+			return true;
+		}
 		global $btf_ad_code;
 		$adbox_code = "\n<div style=\"clear: both; height:110px; width:100%;\">$btf_ad_code</div>\n";
 		
