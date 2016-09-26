@@ -1,93 +1,5 @@
 <?php
 
-if(!isset($wgTLWiki)) {
-	$wgTLWiki = '';
-}
-
-switch ($wgTLWiki)
-{
-case 'sc':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_BW_BTF1 -->
-<div id='div-gpt-ad-1450471156048-19'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-19'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'sc2':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_SC2_BTF1 -->
-<div id='div-gpt-ad-1450471156048-33'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-33'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'dota2':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Dota2_BTF1 -->
-<div id='div-gpt-ad-1450471156048-23'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-23'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'heroes':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
-<div id='div-gpt-ad-1450471156048-25'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'hearthstone':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
-<div id='div-gpt-ad-1450471156048-25'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'counterstrike':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_CS_BTF1 -->
-<div id='div-gpt-ad-1450471156048-21'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-21'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'overwatch':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Overwatch_BTF1 -->
-<div id='div-gpt-ad-1450471156048-31'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-31'); });
-</script>
-</div>
-END_HTML;
-	break;
-case 'smash':
-	$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Smash_BTF1 -->
-<div id='div-gpt-ad-1450471156048-35'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-35'); });
-</script>
-</div>
-END_HTML;
-	break;
-}
-
 class LiquiFlowAdsHooks {
 	public static function onLiquiFlowAdSidebar($includeDir) {
 		echo '<div id="sidebar-ad">';
@@ -112,6 +24,95 @@ class LiquiFlowAdsHooks {
 		return true;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
+		global $wgTLWiki;
+		if(!isset($wgTLWiki)) {
+			$wgTLWiki = '';
+		}
+
+		switch ($wgTLWiki)
+		{
+		case 'sc':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_BW_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-19'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-19'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'sc2':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_SC2_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-33'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-33'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'dota2':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_Dota2_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-23'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-23'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'heroes':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-25'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'hearthstone':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-25'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'counterstrike':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_CS_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-21'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-21'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'overwatch':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_Overwatch_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-31'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-31'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		case 'smash':
+			$btf_ad_code = <<<END_HTML
+		<!-- /23616703/Liquipedia_728x90_Smash_BTF1 -->
+		<div id='div-gpt-ad-1450471156048-35'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-35'); });
+		</script>
+		</div>
+END_HTML;
+			break;
+		}
+		
 		$rc = new RequestContext;
 		if($rc->getSkin()->getSkinName() != 'liquiflow') {
 			return true;
