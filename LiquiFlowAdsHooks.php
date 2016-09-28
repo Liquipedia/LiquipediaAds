@@ -157,6 +157,47 @@ END_HTML;
 		</div>
 END_HTML;
 			break;
+		case 'rocketleague':
+			$btf_ad_code = <<<END_HTML
+<!-- /23616703/Liquipedia_728x90_RL_BTF1 -->
+<div id='div-gpt-ad-1475019355232-11'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-11'); });
+</script>
+</div>
+END_HTML;
+			break;
+		case 'clashroyale':
+			$btf_ad_code = <<<END_HTML
+<!-- /23616703/Liquipedia_728x90_CR_BTF1 -->
+<div id='div-gpt-ad-1475019355232-9'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-9'); });
+</script>
+</div>
+END_HTML;
+			break;
+		case 'fighters':
+			$btf_ad_code = <<<END_HTML
+<!-- /23616703/Liquipedia_728x90_SF_BTF1 -->
+<div id='div-gpt-ad-1475019355232-13'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-13'); });
+</script>
+</div>
+END_HTML;
+			break;
+		case 'warcraft':
+			$btf_ad_code = <<<END_HTML
+<!-- /23616703/Liquipedia_728x90_Warcraft_BTF1 -->
+<div id='div-gpt-ad-1475019355232-15'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-15'); });
+</script>
+</div>
+END_HTML;
+			break;
+
 		}
 		$adbox_code = "\n<div style=\"clear: both; max-height:110px; width:100%;\">$btf_ad_code</div>\n";
 		$adbox_tag = '(((adbox)))';
