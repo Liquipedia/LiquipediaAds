@@ -199,7 +199,7 @@ END_HTML;
 			break;
 
 		}
-		$adbox_code = "\n<div class=\"content-ad\" style=\"clear: both;\">$btf_ad_code</div>\n";
+		$adbox_code = "<div class=\"content-ad\" style=\"clear: both;\">$btf_ad_code</div>";
 		$adbox_tag = '(((adbox)))';
 		$text = str_replace($adbox_tag, $adbox_code, $text);
 		return true;
