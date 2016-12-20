@@ -6,6 +6,7 @@
 	display:block;
 	text-align:center;
 	margin:5px 0 5px -10px;
+	position:relative;
 }
 
 /* At the top over the content (base.less in skin, remove there once ads are updated) */
