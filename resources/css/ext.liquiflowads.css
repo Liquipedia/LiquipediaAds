@@ -1,0 +1,21 @@
+/* Sidebar under TOC (toc.less in skin, remove there once ads are updated) */
+#sidebar-ad {
+	width:300px;
+	height:250px;
+	background-color:#444444;
+	display:block;
+	text-align:center;
+	margin:5px 0 5px -10px;
+}
+
+/* At the top over the content (base.less in skin, remove there once ads are updated) */
+#top-ad {
+	overflow:hidden;
+	width:100%;
+	padding-top:00px;
+}
+
+/* In the content */
+.content-ad {
+	
+}

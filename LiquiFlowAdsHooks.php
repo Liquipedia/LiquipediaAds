@@ -1,6 +1,10 @@
 <?php
 
 class LiquiFlowAdsHooks {
+	public static function onBeforePageDisplay( $out, $skin ) {
+		$out->addModuleStyles( 'ext.liquiflowads' );
+		return true;
+	}
 	public static function onLiquiFlowAdSidebar($includeDir) {
 		echo '<div id="sidebar-ad">';
 		include ($includeDir . '/TeamLiquidStickyAd.inc');
@@ -8,7 +12,7 @@ class LiquiFlowAdsHooks {
 		return true;
 	}
 	public static function onLiquiFlowAdTop($includeDir) {
-		echo '<div class="top-ad">';
+		echo '<div id="top-ad">';
 		include ($includeDir . '/TeamLiquidTopAd.inc');
 		echo '</div>';
 		return true;

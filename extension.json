@@ -37,7 +37,22 @@
 		],
 		"ParserAfterTidy": [
 			"LiquiFlowAdsHooks::onParserAfterTidy"
+		],
+		"BeforePageDisplay": [
+			"LiquiFlowAdsHooks::onBeforePageDisplay"
 		]
+	},
+	"ResourceModules": {
+		"ext.liquiflowads": {
+			"styles": [
+				"resources/css/ext.liquiflowads.css"
+			],
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "LiquiFlowAds"
 	},
 	"manifest_version": 1
 }
