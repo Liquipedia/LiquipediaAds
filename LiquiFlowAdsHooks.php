@@ -5,22 +5,23 @@ class LiquiFlowAdsHooks {
 		$out->addModuleStyles( 'ext.liquiflowads' );
 		return true;
 	}
-	public static function onLiquiFlowAdSidebar($includeDir) {
+	public static function onLiquiFlowAdSidebar() {
+		global $liquipedia_ads;
 		echo '<div id="sidebar-ad">';
-		include ($includeDir . '/TeamLiquidStickyAd.inc');
+		echo $liquipedia_ads['300x250_SATF'];
 		echo '</div>';
 		return true;
 	}
-	public static function onLiquiFlowAdTop($includeDir) {
+	public static function onLiquiFlowAdTop() {
+		global $liquipedia_ads;
 		echo '<div id="top-ad">';
-		include ($includeDir . '/TeamLiquidTopAd.inc');
+		echo $liquipedia_ads['728x90_ATF'];
 		echo '</div>';
 		return true;
 	}
-	public static function onLiquiFlowAdStartCode($includeDir, OutputPage $out) {
-		global $tlAdCode;
-		include ($includeDir . '/TLAdHeader.inc');
-		$out->addHeadItem( 'tlads', $tlAdCode);
+	public static function onLiquiFlowAdStartCode(OutputPage $out) {
+		global $tlAdCode, $liquipedia_ads;
+		$out->addHeadItem( 'tlads', $tlAdCode . $liquipedia_ads['header']);
 		return true;
 	}
 	public static function onLiquiFlowAdEndCode($includeDir) {
@@ -73,137 +74,10 @@ class LiquiFlowAdsHooks {
 		return true;
 	}
 	public static function onParserAfterTidy( &$parser, &$text ) {
-		global $wgTLWiki;
-		if(!isset($wgTLWiki)) {
-			$wgTLWiki = '';
-		}
-
-		$btf_ad_code = '';
-		switch ($wgTLWiki)
-		{
-		case 'sc':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_BW_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-19'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-19'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'sc2':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_SC2_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-33'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-33'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'dota2':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_Dota2_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-23'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-23'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'heroes':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-25'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'hearthstone':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_Hearth_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-25'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-25'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'counterstrike':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_CS_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-21'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-21'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'overwatch':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_Overwatch_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-31'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-31'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'smash':
-			$btf_ad_code = <<<END_HTML
-		<!-- /23616703/Liquipedia_728x90_Smash_BTF1 -->
-		<div id='div-gpt-ad-1450471156048-35'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1450471156048-35'); });
-		</script>
-		</div>
-END_HTML;
-			break;
-		case 'rocketleague':
-			$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_RL_BTF1 -->
-<div id='div-gpt-ad-1475019355232-11'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-11'); });
-</script>
-</div>
-END_HTML;
-			break;
-		case 'clashroyale':
-			$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_CR_BTF1 -->
-<div id='div-gpt-ad-1475019355232-9'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-9'); });
-</script>
-</div>
-END_HTML;
-			break;
-		case 'fighters':
-			$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_SF_BTF1 -->
-<div id='div-gpt-ad-1475019355232-13'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-13'); });
-</script>
-</div>
-END_HTML;
-			break;
-		case 'warcraft':
-			$btf_ad_code = <<<END_HTML
-<!-- /23616703/Liquipedia_728x90_Warcraft_BTF1 -->
-<div id='div-gpt-ad-1475019355232-15'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1475019355232-15'); });
-</script>
-</div>
-END_HTML;
-			break;
-
-		}
-		$adbox_code = "<div class=\"content-ad\" style=\"clear: both;\">$btf_ad_code</div>";
+		global $liquipedia_ads;
+		$adbox_code = '<div class="content-ad">'
+			. $liquipedia_ads['728x90_BTF']
+			. '</div>';
 		$adbox_tag = '(((adbox)))';
 		$text = str_replace($adbox_tag, $adbox_code, $text);
 		return true;
