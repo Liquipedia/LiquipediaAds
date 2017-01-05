@@ -25,7 +25,7 @@ class LiquiFlowAdsHooks {
 		<script>
 		  var googletag = googletag || {};
 		  googletag.cmd = googletag.cmd || [];
-		</script>';
+		</script>
 END_HTML;
 		global $liquipedia_ads;
 		$out->addHeadItem( 'tlads', $tlAdCode . $liquipedia_ads['header']);
