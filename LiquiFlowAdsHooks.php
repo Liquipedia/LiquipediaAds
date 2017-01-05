@@ -20,7 +20,14 @@ class LiquiFlowAdsHooks {
 		return true;
 	}
 	public static function onLiquiFlowAdStartCode(OutputPage $out) {
-		global $tlAdCode, $liquipedia_ads;
+		$tlAdCode = <<<END_HTML
+		<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+		<script>
+		  var googletag = googletag || {};
+		  googletag.cmd = googletag.cmd || [];
+		</script>';
+END_HTML;
+		global $liquipedia_ads;
 		$out->addHeadItem( 'tlads', $tlAdCode . $liquipedia_ads['header']);
 		return true;
 	}
