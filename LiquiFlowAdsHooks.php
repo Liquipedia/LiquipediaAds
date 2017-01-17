@@ -36,11 +36,13 @@ END_HTML;
 		return true;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
+		$adbox_tag = self::getAdboxTag();
+
 		$rc = new RequestContext;
 		if($rc->getSkin()->getSkinName() != 'liquiflow') {
 			return true;
 		}
-		$adbox_tag = "\n(((adbox)))\n";
+		$adbox_tag = "\n" . $adbox_tag . "\n";
 		
 		$title = $parser->getTitle();
 		if($title->getNamespace() != NS_MAIN) {
@@ -82,12 +84,16 @@ END_HTML;
 	}
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		global $liquipedia_ads;
+		$adbox_tag = self::getAdboxTag();
+
 		$adbox_code = '<div class="content-ad">'
 			. $liquipedia_ads['728x90_BTF']
 			. '</div>';
-		$adbox_tag = '(((adbox)))';
 		$text = str_replace($adbox_tag, $adbox_code, $text);
 		return true;
+	}
+	public static function getAdboxTag() {
+		return '(((adbox)))';
 	}
 }
 
