@@ -4,5 +4,5 @@
 			"Alex Winkler"
 		]
 	},
-	"liquiflowads-desc": "Allows to put ads in the LiquiFlow skin. The headings for the content adboxes can be defined in [[MediaWiki:Adbox_Headings]]."
+	"liquiflowads-desc": "Allows to put ads in the LiquiFlow skin. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]]."
 }
