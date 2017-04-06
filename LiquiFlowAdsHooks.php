@@ -51,8 +51,8 @@ END_HTML;
 		if($title->getNamespace() != NS_MAIN) {
 			return true;
 		}
-		$article = WikiPage::factory($title);
-		$revision = $article->getRevision();
+		$wikipage = WikiPage::factory($title);
+		$revision = $wikipage->getRevision();
 		$content = $revision->getContent(Revision::FOR_PUBLIC);
 		$contenttext = ContentHandler::getContentText($content);
 		if ($contenttext != $text)
