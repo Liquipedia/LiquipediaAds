@@ -52,13 +52,17 @@ END_HTML;
 			return true;
 		}
 		$article = WikiPage::factory($title);
-		if ($article->getText(Revision::FOR_PUBLIC) != $text)
+		$revision = $article->getRevision();
+		$content = $revision->getContent(Revision::FOR_PUBLIC);
+		$contenttext = ContentHandler::getContentText($content);
+		if ($contenttext != $text)
 			return;
 		$has_added_adbox = false;
 		if (preg_match_all("/\n\s*==([^=]+)==\s*\n/", "\n" . $text, $findings)) {
 			//$number_of_adboxes = 1;
 			$pages = wfMessage( 'adbox-headings' )->plain();
 			$key_headings = explode("\n", $pages);
+			//echo '<pre>'.print_r(str_replace("\n","NNN",$text),true).'</pre>';
 			foreach($key_headings as $key_heading) {
 				foreach($findings[1] as $findingid => $finding) {
 					if(!$has_added_adbox) {
