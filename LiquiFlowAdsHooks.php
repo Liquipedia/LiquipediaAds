@@ -51,6 +51,8 @@ END_HTML;
 		}
 		$wikipage = WikiPage::factory($title);
 		$revision = $wikipage->getRevision();
+		if (!$revision)
+			return;
 		$content = $revision->getContent(Revision::FOR_PUBLIC);
 		$contenttext = ContentHandler::getContentText($content);
 		if ($contenttext != $text)
