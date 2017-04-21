@@ -39,10 +39,6 @@ END_HTML;
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
 		$adbox_tag = self::getAdboxTag();
 
-		$rc = new RequestContext;
-		if($rc->getSkin()->getSkinName() != 'liquiflow') {
-			return true;
-		}
 		$adbox_tag = "\n" . $adbox_tag . "\n";
 		
 		$title = $parser->getTitle();
