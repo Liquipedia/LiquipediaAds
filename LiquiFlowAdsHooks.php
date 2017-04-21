@@ -38,9 +38,8 @@ END_HTML;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
 		$adbox_tag = self::getAdboxTag();
-
 		$adbox_tag = "\n" . $adbox_tag . "\n";
-		
+
 		$title = $parser->getTitle();
 		if($title->getNamespace() != NS_MAIN) {
 			return true;
