@@ -38,22 +38,23 @@ END_HTML;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
 		$adbox_tag = self::getAdboxTag();
-		$adbox_tag = "\n" . $adbox_tag . "\n";
-
+		$$adbox_tag = "\n" . $adbox_tag . "\n";
 		$title = $parser->getTitle();
 		if($title->getNamespace() != NS_MAIN) {
 			return true;
 		}
 		$wikipage = WikiPage::factory($title);
 		$revision = $wikipage->getRevision();
-		if (!$revision)
+		if (!$revision) {
 			return;
+		}
 		$content = $revision->getContent(Revision::FOR_PUBLIC);
 		$contenttext = ContentHandler::getContentText($content);
-		if ($contenttext != $text)
+		if ($contenttext != $text) {
 			return;
+		}
 		$has_added_adbox = false;
-		if (preg_match_all("/\n\s*==([^=]+)==\s*\n/", "\n" . $text, $findings)) {
+		if (preg_match_all("/\n\s*==([^=]+)==\s*\n/", "\n" . $text, $findings)) {echo '<pre>'.print_r($findings,true).'</pre>';
 			//$number_of_adboxes = 1;
 			$pages = wfMessage( 'adbox-headings' )->plain();
 			$key_headings = explode("\n", $pages);
@@ -85,7 +86,6 @@ END_HTML;
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		global $liquipedia_ads;
 		$adbox_tag = self::getAdboxTag();
-
 		$adbox_code = '<div class="content-ad">'
 			. $liquipedia_ads['728x90_BTF']
 			. '</div>';
