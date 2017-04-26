@@ -93,7 +93,7 @@ END_HTML;
 		return true;
 	}
 	public static function getAdboxTag() {
-		return '(((adbox)))';
+		return '<div>(((adbox)))</div>';
 	}
 }
 
