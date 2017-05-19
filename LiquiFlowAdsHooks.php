@@ -53,7 +53,7 @@ END_HTML;
 			return;
 		}
 		$has_added_adbox = false;
-		if (preg_match_all("/^==([^=]+)==\\s*$/m", "\n" . $text, $findings)) {
+		if (preg_match_all("/^==([^=]+)==\\s*$/m", $text, $findings)) {
 			//$number_of_adboxes = 1;
 			$pages = wfMessage( 'adbox-headings' )->plain();
 			$key_headings = explode("\n", $pages);
