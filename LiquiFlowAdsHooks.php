@@ -61,7 +61,7 @@ END_HTML;
 				foreach($findings[1] as $findingid => $finding) {
 					if(!$has_added_adbox) {
 						if (trim($finding) == trim($key_heading, "* \t\n\r\0\x0B")) {
-							$text = preg_replace('/' . str_replace('/', '\/', preg_quote($findings[0][$findingid])) . '/', $findings[0][$findingid] . "\n" . $adbox_tag . "\n", $text);
+							$text = preg_replace('/' . str_replace('/^', '\/', preg_quote($findings[0][$findingid])) . '$/m', $findings[0][$findingid] . "\n" . $adbox_tag . "\n", $text);
 							$has_added_adbox = true;
 							break 2;
 						}
