@@ -73,7 +73,7 @@ END_HTML;
 			if (count($findings[0]) <= 2) {
 				$text = $text . "\n" . $adbox_tag;
 			} else {
-				$text = preg_replace('/' . str_replace('/', '\/', preg_quote($findings[0][ceil((count($findings[0]) - 1) / 2)])) . '/', $findings[0][ceil((count($findings[0]) - 1) / 2)] . "\n" . $adbox_tag . "\n", $text);
+				$text = preg_replace('/' . str_replace('/^', '\/', preg_quote($findings[0][ceil((count($findings[0]) - 1) / 2)])) . '$/m', $findings[0][ceil((count($findings[0]) - 1) / 2)] . "\n" . $adbox_tag . "\n", $text);
 				$has_added_adbox = true;
 			}
 		}
