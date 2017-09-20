@@ -43,6 +43,12 @@
 		],
 		"BeforePageDisplay": [
 			"LiquiFlowAdsHooks::onBeforePageDisplay"
+		],
+		"LiquiFlowBodyFirst": [
+			"LiquiFlowAdsHooks::onLiquiFlowBodyFirst"
+		],
+		"ParserFirstCallInit": [
+			"LiquiFlowAdsHooks::onParserFirstCallInit"
 		]
 	},
 	"ResourceModules": {

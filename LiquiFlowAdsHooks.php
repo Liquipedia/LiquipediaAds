@@ -77,7 +77,13 @@ END_HTML;
 		return true;
 	}
 	public static function onLiquiFlowAdEndCode($includeDir) {
-		include ($includeDir . '/TeamLiquidFooter.inc');
+		include($includeDir . '/TeamLiquidFooter.inc');
+		echo '<script>'
+		. 'var screen_width = Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth);
+if(screen_width < 1304) {
+	document.querySelector(\'#sidebar-ad div\').removeAttribute(\'adonis-marker\');
+}'
+			. '</script>';
 		return true;
 	}
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
@@ -134,6 +140,26 @@ END_HTML;
 	}
 	public static function getAdboxTag() {
 		return '<div>(((adbox)))</div>';
+	}
+	public static function onLiquiFlowBodyFirst () {
+		global $liquipedia_ads;
+		if (isset($liquipedia_ads['no_adonis']) && $liquipedia_ads['no_adonis'])
+		{
+		}
+		else if (isset($liquipedia_ads['adonis_v2']) && $liquipedia_ads['adonis_v2'])
+			echo '<script src="/starcraft/resources/assets/w2.1.js"></script>';
+		else
+			echo '<script src="/starcraft/resources/assets/w.1.js"></script>';
+		return true;
+	}
+	public static function onParserFirstCallInit( Parser &$parser ) {
+		$parser->setHook( 'adbox', 'LiquiFlowAdsHooks::adboxRender' );
+		return true;
+	}
+	public static function adboxRender ($input, array $args, Parser $parser, PPFrame $frame) {
+		global $liquipedia_ads;
+		$code = $liquipedia_ads['300x250_ATF'];
+		return array(trim($code), "markerType" => 'nowiki' );
 	}
 }
 
