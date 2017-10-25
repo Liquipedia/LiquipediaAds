@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"[http://fo-nttax.de Alex Winkler]",
+			"Vladsg"
+		]
+	},
+	"liquiflowads-desc": "Позволяет размещать рекламу в теме LiquiFlow. Заголовки для рекламных объявлений могут быть определены в [[MediaWiki:Adbox-headings]]."
+}
