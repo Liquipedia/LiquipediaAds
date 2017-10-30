@@ -23,17 +23,17 @@
 		"LiquiFlowAdsHooks": "LiquiFlowAdsHooks.php"
 	},
 	"Hooks": {
-		"LiquiFlowAdSidebar": [
-			"LiquiFlowAdsHooks::onLiquiFlowAdSidebar"
+		"LiquiFlowSidebar": [
+			"LiquiFlowAdsHooks::onLiquiFlowSidebar"
 		],
-		"LiquiFlowAdTop": [
-			"LiquiFlowAdsHooks::onLiquiFlowAdTop"
+		"LiquiFlowTop": [
+			"LiquiFlowAdsHooks::onLiquiFlowTop"
 		],
-		"LiquiFlowAdStartCode": [
-			"LiquiFlowAdsHooks::onLiquiFlowAdStartCode"
+		"LiquiFlowStartCode": [
+			"LiquiFlowAdsHooks::onLiquiFlowStartCode"
 		],
-		"LiquiFlowAdEndCode": [
-			"LiquiFlowAdsHooks::onLiquiFlowAdEndCode"
+		"LiquiFlowEndCode": [
+			"LiquiFlowAdsHooks::onLiquiFlowEndCode"
 		],
 		"ParserBeforeStrip": [
 			"LiquiFlowAdsHooks::onParserBeforeStrip"

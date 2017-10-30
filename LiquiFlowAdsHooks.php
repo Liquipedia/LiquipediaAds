@@ -5,21 +5,21 @@ class LiquiFlowAdsHooks {
 		$out->addModuleStyles( 'ext.liquiflowads' );
 		return true;
 	}
-	public static function onLiquiFlowAdSidebar() {
+	public static function onLiquiFlowSidebar() {
 		global $liquipedia_ads;
 		echo '<div id="sidebar-ad">';
 		echo $liquipedia_ads['300x250_SATF'];
 		echo '</div>';
 		return true;
 	}
-	public static function onLiquiFlowAdTop() {
+	public static function onLiquiFlowTop() {
 		global $liquipedia_ads;
 		echo '<div id="top-ad">';
 		echo $liquipedia_ads['728x90_ATF'];
 		echo '</div>';
 		return true;
 	}
-	public static function onLiquiFlowAdStartCode(OutputPage $out) {
+	public static function onLiquiFlowStartCode(OutputPage $out) {
 		global $liquipedia_ads;
 
 		$tlAdCode = '';
@@ -76,7 +76,7 @@ END_HTML;
 		$out->addHeadItem( 'tlads', $tlAdCode);
 		return true;
 	}
-	public static function onLiquiFlowAdEndCode($includeDir) {
+	public static function onLiquiFlowEndCode($includeDir) {
 		include($includeDir . '/TeamLiquidFooter.inc');
 		echo '<script>'
 		. 'var screen_width = Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth);
