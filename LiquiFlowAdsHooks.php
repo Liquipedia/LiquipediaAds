@@ -7,11 +7,13 @@ class LiquiFlowAdsHooks {
 	}
 	public static function onLiquiFlowSidebar( $skin ) {
 		if(
-			(
-				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
-				|| $skin->getTitle()->getNamespace() === NS_SPECIAL 
+			!(
+				!$skin->getUser()->isAnon()
+				&& (
+					$skin->getTitle()->getNamespace() === NS_SPECIAL
+					|| in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
+				)
 			)
-			&& !$skin->getUser()->isAnon()
 		) {
 			global $liquipedia_ads;
 			echo '<div id="sidebar-ad">';
@@ -28,11 +30,13 @@ if(screen_width < 1304) {
 	}
 	public static function onLiquiFlowTop( $skin ) {
 		if(
-			(
-				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
-				|| $skin->getTitle()->getNamespace() === NS_SPECIAL 
+			!(
+				!$skin->getUser()->isAnon()
+				&& (
+					$skin->getTitle()->getNamespace() === NS_SPECIAL
+					|| in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
+				)
 			)
-			&& !$skin->getUser()->isAnon()
 		) {
 			global $liquipedia_ads;
 			echo '<div id="top-ad">';
