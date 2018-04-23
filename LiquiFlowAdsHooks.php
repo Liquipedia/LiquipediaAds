@@ -8,7 +8,7 @@ class LiquiFlowAdsHooks {
 	public static function onLiquiFlowSidebar( $skin ) {
 		if(
 			(
-				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit' ] )
+				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
 				|| $skin->getTitle()->getNamespace() === NS_SPECIAL 
 			)
 			&& !$skin->getUser()->isAnon()
@@ -29,7 +29,7 @@ if(screen_width < 1304) {
 	public static function onLiquiFlowTop( $skin ) {
 		if(
 			(
-				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit' ] )
+				!in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
 				|| $skin->getTitle()->getNamespace() === NS_SPECIAL 
 			)
 			&& !$skin->getUser()->isAnon()
