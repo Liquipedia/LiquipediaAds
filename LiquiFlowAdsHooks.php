@@ -152,7 +152,7 @@ END_HTML;
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		global $liquipedia_ads;
 		$adbox_tag = self::getAdboxTag();
-		$adbox_code = '<div class="content-ad" class="navigation-not-searchable">'
+		$adbox_code = '<div class="content-ad navigation-not-searchable">'
 			. $liquipedia_ads[ '728x90_BTF' ]
 			. '</div>';
 		$text = str_replace( $adbox_tag, $adbox_code, $text );
