@@ -21,12 +21,15 @@ class LiquiFlowAdsHooks {
 			echo '<div id="sidebar-ad" class="navigation-not-searchable">';
 			echo $liquipedia_ads[ '300x250_SATF' ];
 			echo '</div>';
-			echo '<script>'
+
+			if ( ! (isset( $liquipedia_ads[ 'no_adonis' ] ) && $liquipedia_ads[ 'no_adonis' ]) ) {
+				echo '<script>'
 			. 'var screen_width = Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth);
 if(screen_width < 1304) {
 	document.querySelector(\'#sidebar-ad div\').removeAttribute(\'adonis-marker\');
 }'
 			. '</script>';
+			}
 		}
 		return true;
 	}
@@ -79,7 +82,7 @@ script.type = 'text/javascript';
 document.head.appendChild(script);
 </script>
 END_HTML;
-		} else {
+		} else if ( !isset ($liquipedia_ads['no_dfp_header']) || !$liquipedia_ads['no_dfp_header'] ) {
 			$tlAdCode .= <<<END_HTML
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
