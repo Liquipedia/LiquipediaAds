@@ -1,6 +1,6 @@
 {
 	"name": "LiquiFlowAds",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]"
 	],
@@ -9,8 +9,8 @@
 	"license-name": "MIT",
 	"type": "parserhook",
 	"requires": {
-		"MediaWiki": ">= 1.25.0",
-		"skins": {
+		"MediaWiki": ">= 1.31.0",
+		"skin": {
 			"LiquiFlow": "*"
 		}
 	},
@@ -63,5 +63,5 @@
 		"localBasePath": "",
 		"remoteExtPath": "LiquiFlowAds"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
