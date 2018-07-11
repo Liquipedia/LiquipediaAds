@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"[http://fo-nttax.de Alex Winkler]"
+			"[https://fo-nttax.de Alex Winkler]"
 		]
 	},
-	"liquiflowads-desc": "Allows to put ads in the LiquiFlow skin. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]]."
+	"liquipediaads-desc": "Allows to put ads in the LiquiFlow skin. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]]."
 }

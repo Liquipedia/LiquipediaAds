@@ -1,11 +1,11 @@
-LiquiFlow LiquiFlowAds
-======================
+LiquipediaAds
+=============
 
-MediaWiki Extension for Liquipedia, allows to put ads in the LiquiFlow skin.
+MediaWiki Extension for Liquipedia, allows to put ads.
 
 Installation
 ============
 * Extract the extension folder to extensions/
 * Add the following line to LocalSettings.php:
 
-	wfLoadExtension( 'LiquiFlowAds' );
+	wfLoadExtension( 'LiquipediaAds' );

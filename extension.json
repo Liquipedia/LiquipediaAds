@@ -1,11 +1,11 @@
 {
-	"name": "LiquiFlowAds",
+	"name": "LiquipediaAds",
 	"version": "1.2.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]"
 	],
 	"url": "https://liquipedia.net/",
-	"descriptionmsg": "liquiflowads-desc",
+	"descriptionmsg": "liquipediaads-desc",
 	"license-name": "MIT",
 	"type": "parserhook",
 	"requires": {
@@ -20,48 +20,48 @@
 		]
 	},
 	"AutoloadClasses": {
-		"LiquiFlowAdsHooks": "LiquiFlowAdsHooks.php"
+		"LiquipediaAdsHooks": "LiquipediaAdsHooks.php"
 	},
 	"Hooks": {
 		"LiquiFlowSidebar": [
-			"LiquiFlowAdsHooks::onLiquiFlowSidebar"
+			"LiquipediaAdsHooks::onLiquiFlowSidebar"
 		],
 		"LiquiFlowTop": [
-			"LiquiFlowAdsHooks::onLiquiFlowTop"
+			"LiquipediaAdsHooks::onLiquiFlowTop"
 		],
 		"LiquiFlowStartCode": [
-			"LiquiFlowAdsHooks::onLiquiFlowStartCode"
+			"LiquipediaAdsHooks::onLiquiFlowStartCode"
 		],
 		"LiquiFlowEndCode": [
-			"LiquiFlowAdsHooks::onLiquiFlowEndCode"
+			"LiquipediaAdsHooks::onLiquiFlowEndCode"
 		],
 		"ParserBeforeStrip": [
-			"LiquiFlowAdsHooks::onParserBeforeStrip"
+			"LiquipediaAdsHooks::onParserBeforeStrip"
 		],
 		"ParserAfterTidy": [
-			"LiquiFlowAdsHooks::onParserAfterTidy"
+			"LiquipediaAdsHooks::onParserAfterTidy"
 		],
 		"BeforePageDisplay": [
-			"LiquiFlowAdsHooks::onBeforePageDisplay"
+			"LiquipediaAdsHooks::onBeforePageDisplay"
 		],
 		"LiquiFlowBodyFirst": [
-			"LiquiFlowAdsHooks::onLiquiFlowBodyFirst"
+			"LiquipediaAdsHooks::onLiquiFlowBodyFirst"
 		],
 		"ParserFirstCallInit": [
-			"LiquiFlowAdsHooks::onParserFirstCallInit"
+			"LiquipediaAdsHooks::onParserFirstCallInit"
 		]
 	},
 	"ResourceModules": {
-		"ext.liquiflowads": {
+		"ext.liquipediaads": {
 			"styles": [
-				"resources/css/ext.liquiflowads.css"
+				"resources/css/ext.liquipediaads.css"
 			],
 			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"remoteExtPath": "LiquiFlowAds"
+		"remoteExtPath": "LiquipediaAds"
 	},
 	"manifest_version": 2
 }
