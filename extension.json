@@ -9,13 +9,10 @@
 	"license-name": "MIT",
 	"type": "parserhook",
 	"requires": {
-		"MediaWiki": ">= 1.31.0",
-		"skin": {
-			"LiquiFlow": "*"
-		}
+		"MediaWiki": ">= 1.31.0"
 	},
 	"MessagesDirs": {
-		"LiquiFlowAds": [
+		"LiquipediaAds": [
 			"i18n"
 		]
 	},

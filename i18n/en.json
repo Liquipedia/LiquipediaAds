@@ -4,5 +4,5 @@
 			"[https://fo-nttax.de Alex Winkler]"
 		]
 	},
-	"liquipediaads-desc": "Allows to put ads in the LiquiFlow skin. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]]."
+	"liquipediaads-desc": "Allows to put ads on Liquipedia. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]]."
 }
