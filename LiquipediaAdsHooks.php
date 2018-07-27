@@ -91,7 +91,8 @@ END_HTML;
 	var advelvetTargeting = [];
 	advelvetTargeting.push((Math.floor(Math.random() * 20) + 1) + "");
 	googletag.cmd.push(function () {
-		googletag.pubads().setTargeting('advelvet', advelvetTargeting);
+		googletag.pubads().setTargeting('advelvet', advelvetTargeting)
+		.setTargeting ('url', location.pathname);
 	});
 </script>
 END_HTML;
