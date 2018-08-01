@@ -7,7 +7,7 @@ class LiquipediaAdsHooks {
 		return true;
 	}
 
-	public static function onLiquiFlowSidebar( $skin ) {
+	public static function onBruinenSidebar( $skin ) {
 		if (
 			!(
 			!$skin->getUser()->isAnon()
@@ -34,7 +34,7 @@ if(screen_width < 1304) {
 		return true;
 	}
 
-	public static function onLiquiFlowTop( $skin ) {
+	public static function onBruinenTop( $skin ) {
 		if (
 			!(
 			!$skin->getUser()->isAnon()
@@ -52,7 +52,7 @@ if(screen_width < 1304) {
 		return true;
 	}
 
-	public static function onLiquiFlowStartCode( OutputPage $out ) {
+	public static function onBruinenStartCode( OutputPage $out ) {
 		global $liquipedia_ads;
 
 		$tlAdCode = '';
@@ -104,8 +104,8 @@ END_HTML;
 		return true;
 	}
 
-	public static function onLiquiFlowEndCode( $includeDir, $skin ) {
-		include( $includeDir . '/TeamLiquidFooter.inc' );
+	public static function onBruinenEndCode( $includeDir, $skin ) {
+		include( $includeDir . '/../TeamLiquidFooter.inc' );
 		return true;
 	}
 
@@ -167,7 +167,7 @@ END_HTML;
 		return '<div>(((adbox)))</div>';
 	}
 
-	public static function onLiquiFlowBodyFirst() {
+	public static function onBruinenBodyFirst() {
 		global $liquipedia_ads;
 		if ( isset( $liquipedia_ads[ 'no_adonis' ] ) && $liquipedia_ads[ 'no_adonis' ] ) {
 
