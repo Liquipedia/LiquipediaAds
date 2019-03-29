@@ -1,6 +1,8 @@
 <?php
 
-class LiquipediaAdsHooks {
+namespace Liquipedia\Ads;
+
+class Hooks {
 
 	public static function onBeforePageDisplay( $out, $skin ) {
 		$out->addModuleStyles( 'ext.liquipediaads' );
@@ -70,18 +72,7 @@ END_HTML;
 		}
 
 		if ( isset( $liquipedia_ads[ 'curse_test' ] ) && $liquipedia_ads[ 'curse_test' ] ) {
-			$tlAdCode .= <<<END_HTML
-<script>
-var script = document.createElement('script');
-var tstamp = new Date();
-var cachebust = '' + (1900 + tstamp.getYear()) + '-' + tstamp.getMonth() + '-' + tstamp.getDate() + '-' + tstamp.getHours();
-script.id = 'factorem';
-script.src = '//cdm.cursecdn.com/js/teamliquid/cdmfactorem_min.js?' + cachebust;
-script.async = false;
-script.type = 'text/javascript';
-document.head.appendChild(script);
-</script>
-END_HTML;
+
 		} else if ( !isset( $liquipedia_ads[ 'no_dfp_header' ] ) || !$liquipedia_ads[ 'no_dfp_header' ] ) {
 			$tlAdCode .= <<<END_HTML
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
@@ -110,43 +101,31 @@ END_HTML;
 	}
 
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
-		$adbox_tag = self::getAdboxTag();
-		$title = $parser->getTitle();
-		if ( $title->getNamespace() != NS_MAIN ) {
-			return true;
-		}
-		$wikipage = WikiPage::factory( $title );
-		$revision = $wikipage->getRevision();
-		if ( !$revision ) {
-			return;
-		}
-		$content = $revision->getContent( Revision::FOR_PUBLIC );
-		$contenttext = ContentHandler::getContentText( $content );
-		if ( $contenttext != $text ) {
-			return;
-		}
-		$has_added_adbox = false;
-		if ( preg_match_all( "/^==([^=]+)==\\s*$/m", $text, $findings ) ) {
-			//$number_of_adboxes = 1;
-			$pages = wfMessage( 'adbox-headings' )->plain();
-			$key_headings = explode( "\n", $pages );
-			foreach ( $key_headings as $key_heading ) {
-				foreach ( $findings[ 1 ] as $findingid => $finding ) {
-					if ( !$has_added_adbox ) {
-						if ( trim( $finding ) == trim( $key_heading, "* \t\n\r\0\x0B" ) ) {
-							$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ $findingid ] ) ) . '$/m', $findings[ 0 ][ $findingid ] . "\n" . $adbox_tag . "\n", $text, 1 );
-							$has_added_adbox = true;
-							break 2;
+		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
+		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
+			global $liquipedia_ads;
+			$adbox_code = $liquipedia_ads[ '728x90_BTF' ];
+			$has_added_adbox = false;
+			// Check for headings as defined, if found, place ad there
+			if ( preg_match_all( "/^==([^=]+)==\\s*$/m", $text, $findings ) ) {
+				// $number_of_adboxes = 1;
+				$pages = wfMessage( 'adbox-headings' )->plain();
+				$key_headings = explode( "\n", $pages );
+				foreach ( $key_headings as $key_heading ) {
+					foreach ( $findings[ 1 ] as $findingid => $finding ) {
+						if ( !$has_added_adbox ) {
+							if ( trim( $finding ) == trim( $key_heading, "* \t\n\r\0\x0B" ) ) {
+								$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ $findingid ] ) ) . '$/m', $findings[ 0 ][ $findingid ] . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
+								$has_added_adbox = true;
+								break 2;
+							}
 						}
 					}
 				}
 			}
-		}
-		if ( !$has_added_adbox ) {
-			if ( count( $findings[ 0 ] ) <= 2 ) {
-				$text = $text . "\n" . $adbox_tag;
-			} else {
-				$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1) / 2 ) ] ) ) . '$/m', $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1 ) / 2 ) ] . "\n" . $adbox_tag . "\n", $text, 1 );
+			// If no heading found, and more than 3 headings, place in the middle of the page
+			if ( !$has_added_adbox && count( $findings[ 0 ] ) >= 3 ) {
+				$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1) / 2 ) ] ) ) . '$/m', $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1 ) / 2 ) ] . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
 				$has_added_adbox = true;
 			}
 		}
@@ -155,16 +134,8 @@ END_HTML;
 
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		global $liquipedia_ads;
-		$adbox_tag = self::getAdboxTag();
-		$adbox_code = '<div class="content-ad navigation-not-searchable">'
-			. $liquipedia_ads[ '728x90_BTF' ]
-			. '</div>';
-		$text = str_replace( $adbox_tag, $adbox_code, $text );
+		$text .= "\n" . $liquipedia_ads[ '728x90_FOOTER' ];
 		return true;
-	}
-
-	public static function getAdboxTag() {
-		return '<div>(((adbox)))</div>';
 	}
 
 	public static function onBruinenBodyFirst() {
