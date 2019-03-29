@@ -27,15 +27,6 @@ class Hooks {
 			echo '<div id="sidebar-ad" class="navigation-not-searchable">';
 			echo $liquipedia_ads[ '300x250_SATF' ];
 			echo '</div>';
-
-			if ( !(isset( $liquipedia_ads[ 'no_adonis' ] ) && $liquipedia_ads[ 'no_adonis' ]) ) {
-				echo '<script>'
-				. 'var screen_width = Math.max(document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth, document.documentElement.clientWidth);
-if(screen_width < 1304) {
-	document.querySelector(\'#sidebar-ad div\').removeAttribute(\'adonis-marker\');
-}'
-				. '</script>';
-			}
 		}
 		return true;
 	}
@@ -63,22 +54,7 @@ if(screen_width < 1304) {
 
 		$tlAdCode = '';
 
-		if ( isset( $liquipedia_ads[ 'no_adonis' ] ) && $liquipedia_ads[ 'no_adonis' ] ) {
-
-		} elseif ( isset( $liquipedia_ads[ 'adonis_v2' ] ) && $liquipedia_ads[ 'adonis_v2' ] ) {
-			$tlAdCode .= <<<END_HTML
-<script>!function t(e,n,o){function r(a,s){if(!n[a]){if(!e[a]){var u="function"==typeof require&&require;if(!s&&u)return u(a,!0);if(i)return i(a,!0);var d=new Error("Cannot find module '"+a+"'");throw d.code="MODULE_NOT_FOUND",d}var c=n[a]={exports:{}};e[a][0].call(c.exports,function(t){var n=e[a][1][t];return r(n||t)},c,c.exports,t,e,n,o)}return n[a].exports}for(var i="function"==typeof require&&require,a=0;a<o.length;a++)r(o[a]);return r}({1:[function(t,e,n){"use strict";function o(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"NEW_SCRIPT_EVENT",n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},o=new r(e,{detail:n});t.dispatchEvent(o)}var r=t(3);e.exports=o},{3:3}],2:[function(t,e,n){"use strict";function o(t){t.adonis=t.adonis||{},t.adonis.scriptStatuses={},t.adonis.requestStatuses={};var e=t.XMLHttpRequest.prototype.open;t.XMLHttpRequest.prototype.open=function(n,o){this.addEventListener("error",function(e){0===this.status?t.adonis.scriptStatuses[o]="error":t.adonis.scriptStatuses[o]="load"}),this.addEventListener("load",function(e){t.adonis.scriptStatuses[o]="load"}),this.addEventListener("loadend",function(e){t.adonis.requestStatuses[o]=this.status,r(t)});var i=[].slice.call(arguments,0);return e.apply(this,i)}}var r=t(1);e.exports={wrapXMLHttpRequest:o}},{1:1}],3:[function(t,e,n){(function(t){var n=t.CustomEvent;e.exports=function(){try{var t=new n("cat",{detail:{foo:"bar"}});return"cat"===t.type&&"bar"===t.detail.foo}catch(t){}return!1}()?n:"undefined"!=typeof document&&"function"==typeof document.createEvent?function(t,e){var n=document.createEvent("CustomEvent");return e?n.initCustomEvent(t,e.bubbles,e.cancelable,e.detail):n.initCustomEvent(t,!1,!1,void 0),n}:function(t,e){var n=document.createEventObject();return n.type=t,e?(n.bubbles=Boolean(e.bubbles),n.cancelable=Boolean(e.cancelable),n.detail=e.detail):(n.bubbles=!1,n.cancelable=!1,n.detail=void 0),n}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],4:[function(t,e,n){"use strict";function o(t,e,n,o){"addEventListener"in t?t.addEventListener(e,n,o):"attachEvent"in t&&t.attachEvent("on"+e,n)}var r=t(2),i=t(1);!function(){window.adonis=window.adonis||{},window.adonis.scriptStatuses={},r.wrapXMLHttpRequest(window),o(document,"load",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="load",i(window))},!0),o(document,"error",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="error",i(window))},!0)}()},{1:1,2:2}]},{},[4]);var adonis = adonis || {};adonis.conditionalAdRendering = true;adonis.transport = 'https://www.adiode.com/http';</script>
-END_HTML;
-		} else {
-			$tlAdCode .= <<<END_HTML
-<script>/* observer-6.0.10 */!function t(e,n,o){function r(i,s){if(!n[i]){if(!e[i]){var u="function"==typeof require&&require;if(!s&&u)return u(i,!0);if(a)return a(i,!0);var c=new Error("Cannot find module '"+i+"'");throw c.code="MODULE_NOT_FOUND",c}var d=n[i]={exports:{}};e[i][0].call(d.exports,function(t){var n=e[i][1][t];return r(n?n:t)},d,d.exports,t,e,n,o)}return n[i].exports}for(var a="function"==typeof require&&require,i=0;i<o.length;i++)r(o[i]);return r}({1:[function(t,e,n){function o(t){var e="NEW_SCRIPT_EVENT",n=new r(e,{detail:{}});t.dispatchEvent(n)}const r=t(3);e.exports=o},{3:3}],2:[function(t,e,n){function o(t){t.adonis=t.adonis||{},t.adonis.scriptStatuses={},t.adonis.requestStatuses={};const e=t.XMLHttpRequest,n=function(){const n=new e,o=n.open;return n.open=function(e,a){return n.addEventListener("error",function(e){0===n.status?t.adonis.scriptStatuses[a]="error":t.adonis.scriptStatuses[a]="load"}),n.addEventListener("load",function(e){t.adonis.scriptStatuses[a]="load"}),n.addEventListener("loadend",function(e){t.adonis.requestStatuses[a]=n.status,r(t)}),o.apply(n,arguments)},n};t.XMLHttpRequest=n,e.prototype.constructor=n}const r=t(1);e.exports={wrapXMLHttpRequest:o}},{1:1}],3:[function(t,e,n){(function(t){function n(){try{var t=new o("cat",{detail:{foo:"bar"}});return"cat"===t.type&&"bar"===t.detail.foo}catch(e){}return!1}var o=t.CustomEvent;e.exports=n()?o:"undefined"!=typeof document&&"function"==typeof document.createEvent?function(t,e){var n=document.createEvent("CustomEvent");return e?n.initCustomEvent(t,e.bubbles,e.cancelable,e.detail):n.initCustomEvent(t,!1,!1,void 0),n}:function(t,e){var n=document.createEventObject();return n.type=t,e?(n.bubbles=Boolean(e.bubbles),n.cancelable=Boolean(e.cancelable),n.detail=e.detail):(n.bubbles=!1,n.cancelable=!1,n.detail=void 0),n}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],4:[function(t,e,n){function o(t,e,n,o){"addEventListener"in t?t.addEventListener(e,n,o):"attachEvent"in t&&t.attachEvent("on"+e,n)}const r=t(2),a=t(1);!function(){window.adonis=window.adonis||{},window.adonis.scriptStatuses={},r.wrapXMLHttpRequest(window),o(document,"load",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="load",a(window))},!0),o(document,"error",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="error",a(window))},!0)}()},{1:1,2:2}]},{},[4]);</script>
-END_HTML;
-		}
-
-		if ( isset( $liquipedia_ads[ 'curse_test' ] ) && $liquipedia_ads[ 'curse_test' ] ) {
-
-		} else if ( !isset( $liquipedia_ads[ 'no_dfp_header' ] ) || !$liquipedia_ads[ 'no_dfp_header' ] ) {
-			$tlAdCode .= <<<END_HTML
+		$tlAdCode .= <<<END_HTML
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
 	var googletag = googletag || {};
@@ -91,7 +67,6 @@ END_HTML;
 	});
 </script>
 END_HTML;
-		}
 
 		$tlAdCode .= $liquipedia_ads[ 'header' ];
 
@@ -144,13 +119,6 @@ END_HTML;
 
 	public static function onBruinenBodyFirst() {
 		global $liquipedia_ads;
-		if ( isset( $liquipedia_ads[ 'no_adonis' ] ) && $liquipedia_ads[ 'no_adonis' ] ) {
-
-		} elseif ( isset( $liquipedia_ads[ 'adonis_v2' ] ) && $liquipedia_ads[ 'adonis_v2' ] ) {
-			echo '<script src="/starcraft/resources/assets/w2.1.js"></script>';
-		} else {
-			echo '<script src="/starcraft/resources/assets/w.1.js"></script>';
-		}
 		return true;
 	}
 
