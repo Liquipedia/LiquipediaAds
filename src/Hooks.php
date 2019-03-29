@@ -112,8 +112,11 @@ END_HTML;
 	}
 
 	public static function onParserAfterTidy( &$parser, &$text ) {
-		global $liquipedia_ads;
-		$text .= "\n" . $liquipedia_ads[ '728x90_FOOTER' ];
+		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
+		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
+			global $liquipedia_ads;
+			$text .= "\n" . $liquipedia_ads[ '728x90_FOOTER' ];
+		}
 		return true;
 	}
 
