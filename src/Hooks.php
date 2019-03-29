@@ -2,6 +2,10 @@
 
 namespace Liquipedia\Ads;
 
+use OutputPage;
+use Parser;
+use PPFrame;
+
 class Hooks {
 
 	public static function onBeforePageDisplay( $out, $skin ) {
@@ -151,7 +155,7 @@ END_HTML;
 	}
 
 	public static function onParserFirstCallInit( Parser &$parser ) {
-		$parser->setHook( 'adbox', 'LiquipediaAdsHooks::adboxRender' );
+		$parser->setHook( 'adbox', 'Liquipedia\\Ads\\Hooks::adboxRender' );
 		return true;
 	}
 

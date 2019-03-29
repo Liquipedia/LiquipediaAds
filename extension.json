@@ -21,46 +21,46 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"LiquipediaAdsHooks::onBeforePageDisplay"
+			"Liquipedia\\Ads\\Hooks::onBeforePageDisplay"
 		],
 		"BruinenBodyFirst": [
-			"LiquipediaAdsHooks::onBruinenBodyFirst"
+			"Liquipedia\\Ads\\Hooks::onBruinenBodyFirst"
 		],
 		"BruinenEndCode": [
-			"LiquipediaAdsHooks::onBruinenEndCode"
+			"Liquipedia\\Ads\\Hooks::onBruinenEndCode"
 		],
 		"BruinenSidebar": [
-			"LiquipediaAdsHooks::onBruinenSidebar"
+			"Liquipedia\\Ads\\Hooks::onBruinenSidebar"
 		],
 		"BruinenStartCode": [
-			"LiquipediaAdsHooks::onBruinenStartCode"
+			"Liquipedia\\Ads\\Hooks::onBruinenStartCode"
 		],
 		"BruinenTop": [
-			"LiquipediaAdsHooks::onBruinenTop"
+			"Liquipedia\\Ads\\Hooks::onBruinenTop"
 		],
 		"LiquiFlowBodyFirst": [
-			"LiquipediaAdsHooks::onBruinenBodyFirst"
+			"Liquipedia\\Ads\\Hooks::onBruinenBodyFirst"
 		],
 		"LiquiFlowEndCode": [
-			"LiquipediaAdsHooks::onBruinenEndCode"
+			"Liquipedia\\Ads\\Hooks::onBruinenEndCode"
 		],
 		"LiquiFlowSidebar": [
-			"LiquipediaAdsHooks::onBruinenSidebar"
+			"Liquipedia\\Ads\\Hooks::onBruinenSidebar"
 		],
 		"LiquiFlowStartCode": [
-			"LiquipediaAdsHooks::onBruinenStartCode"
+			"Liquipedia\\Ads\\Hooks::onBruinenStartCode"
 		],
 		"LiquiFlowTop": [
-			"LiquipediaAdsHooks::onBruinenTop"
+			"Liquipedia\\Ads\\Hooks::onBruinenTop"
 		],
 		"ParserAfterTidy": [
-			"LiquipediaAdsHooks::onParserAfterTidy"
+			"Liquipedia\\Ads\\Hooks::onParserAfterTidy"
 		],
 		"ParserBeforeStrip": [
-			"LiquipediaAdsHooks::onParserBeforeStrip"
+			"Liquipedia\\Ads\\Hooks::onParserBeforeStrip"
 		],
 		"ParserFirstCallInit": [
-			"LiquipediaAdsHooks::onParserFirstCallInit"
+			"Liquipedia\\Ads\\Hooks::onParserFirstCallInit"
 		]
 	},
 	"ResourceModules": {
