@@ -83,7 +83,7 @@ END_HTML;
 		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 			global $liquipedia_ads;
-			$adbox_code = $liquipedia_ads[ '728x90_BTF' ];
+			$adbox_code = '<div class="content-ad">' . $liquipedia_ads[ '728x90_BTF' ] . '</div>';
 			$has_added_adbox = false;
 			// Check for headings as defined, if found, place ad there
 			if ( preg_match_all( "/^==([^=]+)==\\s*$/m", $text, $findings ) ) {
@@ -115,7 +115,7 @@ END_HTML;
 		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 			global $liquipedia_ads;
-			$text .= "\n" . $liquipedia_ads[ '728x90_FOOTER' ];
+			$text .= "\n" . '<div class="content-ad">' . $liquipedia_ads[ '728x90_FOOTER' ] . '</div>';
 		}
 		return true;
 	}
