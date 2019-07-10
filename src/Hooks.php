@@ -8,21 +8,31 @@ use PPFrame;
 
 class Hooks {
 
+	private static $adWhitelistedSpecialPages = [ 'StreamPage' ];
+
+	private static function shouldShowAds( $user, $title, $request ) {
+		if ( $user->isAnon() ) {
+			return true;
+		} elseif ( in_array( $request->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] ) ) {
+			return false;
+		} elseif ( $title->getNamespace() === NS_SPECIAL ) {
+			foreach ( self::$adWhitelistedSpecialPages as $page ) {
+				if ( $title->isSpecial( $page ) ) {
+					return true;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
 	public static function onBeforePageDisplay( $out, $skin ) {
 		$out->addModuleStyles( 'ext.liquipediaads' );
 		return true;
 	}
 
 	public static function onBruinenSidebar( $skin ) {
-		if (
-			!(
-			!$skin->getUser()->isAnon()
-			&& (
-			$skin->getTitle()->getNamespace() === NS_SPECIAL
-			|| in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
-			)
-			)
-		) {
+		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
 			global $liquipedia_ads;
 			echo '<div id="sidebar-ad" class="navigation-not-searchable">';
 			echo $liquipedia_ads[ '300x250_SATF' ];
@@ -32,15 +42,7 @@ class Hooks {
 	}
 
 	public static function onBruinenTop( $skin ) {
-		if (
-			!(
-			!$skin->getUser()->isAnon()
-			&& (
-			$skin->getTitle()->getNamespace() === NS_SPECIAL
-			|| in_array( $skin->getRequest()->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] )
-			)
-			)
-		) {
+		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
 			global $liquipedia_ads;
 			echo '<div id="top-ad" class="navigation-not-searchable">';
 			echo $liquipedia_ads[ '728x90_ATF' ];
