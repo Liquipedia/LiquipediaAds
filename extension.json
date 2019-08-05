@@ -75,5 +75,16 @@
 		"localBasePath": "",
 		"remoteExtPath": "LiquipediaAds"
 	},
+	"config": {
+		"LiquipediaAdsWhitelistedPages": {
+			"value": [
+				"StreamPage"
+			],
+			"path": false,
+			"description": "List of special pages that are whitelisted for ads",
+			"descriptionmsg": "liquipediaads-config-liquipediaadswhitelistedpages-desc",
+			"public": true
+		}
+	},
 	"manifest_version": 2
 }

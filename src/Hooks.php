@@ -2,13 +2,12 @@
 
 namespace Liquipedia\Ads;
 
+use MediaWiki\MediaWikiServices;
 use OutputPage;
 use Parser;
 use PPFrame;
 
 class Hooks {
-
-	private static $adWhitelistedSpecialPages = [ 'StreamPage' ];
 
 	private static function shouldShowAds( $user, $title, $request ) {
 		if ( $user->isAnon() ) {
@@ -16,7 +15,9 @@ class Hooks {
 		} elseif ( in_array( $request->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] ) ) {
 			return false;
 		} elseif ( $title->getNamespace() === NS_SPECIAL ) {
-			foreach ( self::$adWhitelistedSpecialPages as $page ) {
+			$config = MediaWikiServices::getInstance()->getMainConfig();
+			$whitelistedPages = $config->get( 'LiquipediaAdsWhitelistedPages' );
+			foreach ( $whitelistedPages as $page ) {
 				if ( $title->isSpecial( $page ) ) {
 					return true;
 				}
@@ -33,9 +34,8 @@ class Hooks {
 
 	public static function onBruinenSidebar( $skin ) {
 		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
-			global $liquipedia_ads;
 			echo '<div id="sidebar-ad" class="navigation-not-searchable">';
-			echo $liquipedia_ads[ '300x250_SATF' ];
+			echo AdCode::get( '300x250_SATF' );
 			echo '</div>';
 		}
 		return true;
@@ -43,34 +43,16 @@ class Hooks {
 
 	public static function onBruinenTop( $skin ) {
 		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
-			global $liquipedia_ads;
 			echo '<div id="top-ad" class="navigation-not-searchable">';
-			echo $liquipedia_ads[ '728x90_ATF' ];
+			echo AdCode::get( '728x90_ATF' );
 			echo '</div>';
 		}
 		return true;
 	}
 
 	public static function onBruinenStartCode( OutputPage $out ) {
-		global $liquipedia_ads;
-
-		$tlAdCode = '';
-
-		$tlAdCode .= <<<END_HTML
-<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-<script>
-	var googletag = googletag || {};
-	googletag.cmd = googletag.cmd || [];
-	var advelvetTargeting = [];
-	advelvetTargeting.push((Math.floor(Math.random() * 20) + 1) + "");
-	googletag.cmd.push(function () {
-		googletag.pubads().setTargeting('advelvet', advelvetTargeting)
-		.setTargeting ('url', location.pathname);
-	});
-</script>
-END_HTML;
-
-		$tlAdCode .= $liquipedia_ads[ 'header' ];
+		$tlAdCode = AdCode::getStartCode();
+		$tlAdCode .= AdCode::get( 'header' );
 
 		$out->addHeadItem( 'tlads', $tlAdCode );
 		return true;
@@ -84,8 +66,7 @@ END_HTML;
 	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
 		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
-			global $liquipedia_ads;
-			$adbox_code = '<div class="content-ad">' . $liquipedia_ads[ '728x90_BTF' ] . '</div>';
+			$adbox_code = '<div class="content-ad">' . AdCode::get( '728x90_BTF' ) . '</div>';
 			$has_added_adbox = false;
 			// Check for headings as defined, if found, place ad there
 			if ( preg_match_all( "/^==([^=]+)==\\s*$/m", $text, $findings ) ) {
@@ -116,14 +97,12 @@ END_HTML;
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 		if ( $parser->getTitle()->getNamespace() === NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
-			global $liquipedia_ads;
-			$text .= "\n" . '<div class="content-ad">' . $liquipedia_ads[ '728x90_FOOTER' ] . '</div>';
+			$text .= "\n" . '<div class="content-ad">' . AdCode::get( '728x90_FOOTER' ) . '</div>';
 		}
 		return true;
 	}
 
 	public static function onBruinenBodyFirst() {
-		global $liquipedia_ads;
 		return true;
 	}
 
@@ -133,8 +112,7 @@ END_HTML;
 	}
 
 	public static function adboxRender( $input, array $args, Parser $parser, PPFrame $frame ) {
-		global $liquipedia_ads;
-		$code = '<div class="navigation-not-searchable">' . $liquipedia_ads[ '300x250_ATF' ] . '</div>';
+		$code = '<div class="navigation-not-searchable">' . AdCode::get( '300x250_ATF' ) . '</div>';
 		return [ trim( $code ), 'markerType' => 'nowiki' ];
 	}
 
