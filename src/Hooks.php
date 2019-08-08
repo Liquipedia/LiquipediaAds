@@ -32,7 +32,7 @@ class Hooks {
 					return true;
 				}
 			}
-			return false; // Other special pages should not have ads, since they are mostly used for editors
+			return false; // Other special pages should not have ads when logged in, since they are mostly used for editors
 		}
 		return true;
 	}
