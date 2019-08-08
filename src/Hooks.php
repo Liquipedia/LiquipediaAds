@@ -61,10 +61,12 @@ class Hooks {
 	}
 
 	public static function onBruinenStartCode( OutputPage $out ) {
-		$tlAdCode = AdCode::getStartCode();
-		$tlAdCode .= AdCode::get( 'header' );
+		if ( self::shouldShowAds( $out->getUser(), $out->getTitle(), $out->getRequest() ) ) {
+			$tlAdCode = AdCode::getStartCode();
+			$tlAdCode .= AdCode::get( 'header' );
 
-		$out->addHeadItem( 'tlads', $tlAdCode );
+			$out->addHeadItem( 'tlads', $tlAdCode );
+		}
 		return true;
 	}
 
