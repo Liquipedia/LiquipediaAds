@@ -84,6 +84,18 @@
 			"description": "List of special pages that are whitelisted for ads",
 			"descriptionmsg": "liquipediaads-config-liquipediaadswhitelistedpages-desc",
 			"public": true
+		},
+		"LiquipediaAdsBlacklistedPages": {
+			"value": [
+				"Userlogin",
+				"Userlogout",
+				"BotPasswords",
+				"Preferences"
+			],
+			"path": false,
+			"description": "List of special pages that are blacklisted for ads",
+			"descriptionmsg": "liquipediaads-config-liquipediaadsblacklistedpages-desc",
+			"public": true
 		}
 	},
 	"manifest_version": 2
