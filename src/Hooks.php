@@ -43,20 +43,20 @@ class Hooks {
 		return true;
 	}
 
-	public static function onBruinenSidebar( $skin ) {
+	public static function onBruinenSidebar( $skin, &$value ) {
 		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
-			echo '<div id="sidebar-ad" class="navigation-not-searchable">';
-			echo AdCode::get( '300x250_SATF' );
-			echo '</div>';
+			$value .= '<div id="sidebar-ad" class="navigation-not-searchable">';
+			$value .= AdCode::get( '300x250_SATF' );
+			$value .= '</div>';
 		}
 		return true;
 	}
 
-	public static function onBruinenTop( $skin ) {
+	public static function onBruinenTop( $skin, &$value ) {
 		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
-			echo '<div id="top-ad" class="navigation-not-searchable">';
-			echo AdCode::get( '728x90_ATF' );
-			echo '</div>';
+			$value .= '<div id="top-ad" class="navigation-not-searchable">';
+			$value .= AdCode::get( '728x90_ATF' );
+			$value .= '</div>';
 		}
 		return true;
 	}
