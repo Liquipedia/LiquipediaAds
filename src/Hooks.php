@@ -119,7 +119,7 @@ class Hooks {
 		return true;
 	}
 
-	public static function onBruinenBodyFirst() {
+	public static function onBruinenBodyFirst( $skin, &$value ) {
 		return true;
 	}
 
