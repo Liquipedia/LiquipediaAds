@@ -71,8 +71,11 @@ class Hooks {
 		return true;
 	}
 
-	public static function onBruinenEndCode( $includeDir, $skin ) {
+	public static function onBruinenEndCode( $includeDir, $skin, &$value ) {
+		ob_start();
 		include( $includeDir . '/../TeamLiquidFooter.inc' );
+		$value .= ob_get_contents();
+		ob_end_clean();
 		return true;
 	}
 
