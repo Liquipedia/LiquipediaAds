@@ -129,11 +129,15 @@ class Hooks {
 					}
 				}
 			}
-			$middleHeading = $filteredPageHeadings[ ceil( ( count( $filteredPageHeadings ) - 1 ) / 2 ) ];
-			self::$adboxHeading = [
-				'text' => $middleHeading[ 'line' ],
-				'anchor' => $middleHeading[ 'anchor' ],
-			];
+			if ( count( $filteredPageHeadings ) > 3 ) {
+				$middleHeading = $filteredPageHeadings[ ceil( ( count( $filteredPageHeadings ) - 1 ) / 2 ) ];
+				self::$adboxHeading = [
+					'text' => $middleHeading[ 'line' ],
+					'anchor' => $middleHeading[ 'anchor' ],
+				];
+				return;
+			}
+			self::$adboxHeading = false;
 		}
 	}
 
@@ -142,7 +146,7 @@ class Hooks {
 			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 				self::setAdboxHeading( $parser->getOutput()->getSections() );
-				if ( !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
+				if ( self::$adboxHeading && !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
 					self::$hasAddedAdbox = true;
 					$adboxCode = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
 					preg_match( '/<(h[1-6])/', $sectionContent, $matches );
