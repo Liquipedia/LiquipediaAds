@@ -129,6 +129,7 @@ class Hooks {
 					}
 				}
 			}
+			// Require at least 3 headings to allow an adbox in the middle that is not attached to one of the key headings
 			if ( count( $filteredPageHeadings ) > 3 ) {
 				$middleHeading = $filteredPageHeadings[ ceil( ( count( $filteredPageHeadings ) - 1 ) / 2 ) ];
 				self::$adboxHeading = [
