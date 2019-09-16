@@ -152,7 +152,7 @@ class Hooks {
 					$adboxCode = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
 					preg_match( '/<(h[1-6])/', $sectionContent, $matches );
 					$headingType = $matches[ 1 ];
-					$sectionContent = preg_replace( '</' . $headingType . '>', '</' . $headingType . '>' . "\n" . $adboxCode . "\n", $sectionContent, 1 );
+					$sectionContent = preg_replace( '(<\/' . $headingType . '>)', '</' . $headingType . '>' . "\n" . $adboxCode . "\n", $sectionContent, 1 );
 				}
 			}
 		}
