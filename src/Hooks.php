@@ -104,7 +104,9 @@ class Hooks {
 				}
 				// If no heading found, and more than 3 headings, place in the middle of the page
 				if ( !$has_added_adbox && count( $findings[ 0 ] ) >= 3 ) {
-					$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1) / 2 ) ] ) ) . '$/m', $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1 ) / 2 ) ] . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
+					$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1) / 2 ) ] ) ) . '$/m', str_replace( [ '^', '$' ], [ '\^', '\$' ], $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1 ) / 2 ) ] ) . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
+					#var_dump( $text );
+					#die();
 					$has_added_adbox = true;
 				}
 			}
