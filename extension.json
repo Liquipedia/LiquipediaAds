@@ -56,11 +56,11 @@
 		"ParserAfterTidy": [
 			"Liquipedia\\Ads\\Hooks::onParserAfterTidy"
 		],
-		"ParserBeforeStrip": [
-			"Liquipedia\\Ads\\Hooks::onParserBeforeStrip"
-		],
 		"ParserFirstCallInit": [
 			"Liquipedia\\Ads\\Hooks::onParserFirstCallInit"
+		],
+		"ParserSectionCreate": [
+			"Liquipedia\\Ads\\Hooks::onParserSectionCreate"
 		]
 	},
 	"ResourceModules": {

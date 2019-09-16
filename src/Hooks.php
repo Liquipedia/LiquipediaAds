@@ -79,39 +79,6 @@ class Hooks {
 		return true;
 	}
 
-	public static function onParserBeforeStrip( &$parser, &$text, &$mStripState ) {
-		if ( self::shouldShowAds( $parser->getUser(), $parser->getTitle() ) ) {
-			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
-			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
-				$adbox_code = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
-				$has_added_adbox = false;
-				// Check for headings as defined, if found, place ad there
-				if ( preg_match_all( "/^==([^=]+)==\\s*$/m", $text, $findings ) ) {
-					// $number_of_adboxes = 1;
-					$pages = wfMessage( 'adbox-headings' )->plain();
-					$key_headings = explode( "\n", $pages );
-					foreach ( $key_headings as $key_heading ) {
-						foreach ( $findings[ 1 ] as $findingid => $finding ) {
-							if ( !$has_added_adbox ) {
-								if ( trim( $finding ) == trim( $key_heading, "* \t\n\r\0\x0B" ) ) {
-									$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ $findingid ] ) ) . '$/m', $findings[ 0 ][ $findingid ] . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
-									$has_added_adbox = true;
-									break 2;
-								}
-							}
-						}
-					}
-				}
-				// If no heading found, and more than 3 headings, place in the middle of the page
-				if ( !$has_added_adbox && count( $findings[ 0 ] ) >= 3 ) {
-					$text = preg_replace( '/^' . str_replace( '/', '\/', preg_quote( $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1) / 2 ) ] ) ) . '$/m', str_replace( [ '^', '$' ], [ '\^', '\$' ], $findings[ 0 ][ ceil( ( count( $findings[ 0 ] ) - 1 ) / 2 ) ] ) . "\n" . $parser->insertStripItem( $adbox_code ) . "\n", $text, 1 );
-					$has_added_adbox = true;
-				}
-			}
-		}
-		return true;
-	}
-
 	public static function onParserAfterTidy( &$parser, &$text ) {
 		if ( self::shouldShowAds( $parser->getUser(), $parser->getTitle() ) ) {
 			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
@@ -134,6 +101,56 @@ class Hooks {
 	public static function adboxRender( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$code = '<div class="navigation-not-searchable">' . AdCode::get( '300x250_ATF' ) . '</div>';
 		return [ trim( $code ), 'markerType' => 'nowiki' ];
+	}
+
+	private static $adboxHeading = null;
+	private static $hasAddedAdbox = false;
+
+	private static function setAdboxHeading( $pageHeadings ) {
+		if ( is_null( self::$adboxHeading ) ) {
+			$rawHeadings = wfMessage( 'adbox-headings' )->plain();
+			$keyHeadings = explode( "\n", $rawHeadings );
+			// Filter headings
+			$filteredPageHeadings = array_values( array_filter( $pageHeadings, function( $var ) {
+					// Only allow <h1> and <h2>
+					if ( intval( $var[ 'level' ] ) <= 2 ) {
+						return true;
+					}
+					return false;
+				} ) );
+			foreach ( $keyHeadings as $keyHeading ) {
+				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
+					if ( $keyHeading === $filteredPageHeading[ 'line' ] ) {
+						self::$adboxHeading = [
+							'text' => $filteredPageHeading[ 'line' ],
+							'anchor' => $filteredPageHeading[ 'anchor' ],
+						];
+						return;
+					}
+				}
+			}
+			$middleHeading = $filteredPageHeadings[ ceil( ( count( $filteredPageHeadings ) - 1 ) / 2 ) ];
+			self::$adboxHeading = [
+				'text' => $middleHeading[ 'line' ],
+				'anchor' => $middleHeading[ 'anchor' ],
+			];
+		}
+	}
+
+	public static function onParserSectionCreate( $parser, $section, &$sectionContent, $showEditLinks ) {
+		if ( self::shouldShowAds( $parser->getUser(), $parser->getTitle() ) ) {
+			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
+			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
+				self::setAdboxHeading( $parser->getOutput()->getSections() );
+				if ( !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
+					self::$hasAddedAdbox = true;
+					$adboxCode = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
+					preg_match( '/<(h[1-6])/', $sectionContent, $matches );
+					$headingType = $matches[ 1 ];
+					$sectionContent = preg_replace( '</' . $headingType . '>', '</' . $headingType . '>' . "\n" . $adboxCode . "\n", $sectionContent, 1 );
+				}
+			}
+		}
 	}
 
 }
