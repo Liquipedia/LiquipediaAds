@@ -43,10 +43,14 @@ class Hooks {
 		return true;
 	}
 
-	public static function onBruinenSidebar( $skin, &$value ) {
+	public static function onBruinenSidebar( $skin, &$value, $sidebarHasContent = false ) {
 		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
 			$value .= '<div id="sidebar-ad" class="navigation-not-searchable">';
-			$value .= AdCode::get( '300x250_SATF' );
+			if ( $sidebarHasContent ) {
+				$value .= AdCode::get( '300x250_SATF' );
+			} else {
+				$value .= AdCode::get( '300x250_SATF2' );
+			}
 			$value .= '</div>';
 		}
 		return true;
