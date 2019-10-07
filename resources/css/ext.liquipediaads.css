@@ -1,8 +1,7 @@
 /* Sidebar under TOC */
 #sidebar-ad {
 	width:300px;
-	height:250px;
-	background-color:#444444;
+	min-height:250px;
 	display:block;
 	text-align:center;
 	margin:7px 0 5px 0;
