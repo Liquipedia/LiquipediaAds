@@ -19,11 +19,8 @@ class AdCode {
 <script>
 	var googletag = googletag || {};
 	googletag.cmd = googletag.cmd || [];
-	var advelvetTargeting = [];
-	advelvetTargeting.push((Math.floor(Math.random() * 20) + 1) + "");
 	googletag.cmd.push(function () {
-		googletag.pubads().setTargeting('advelvet', advelvetTargeting)
-		.setTargeting ('url', location.pathname);
+		googletag.pubads().setTargeting ('url', location.pathname);
 	});
 </script>
 END_HTML;
