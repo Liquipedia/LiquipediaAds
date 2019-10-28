@@ -9,33 +9,51 @@ use PPFrame;
 
 class Hooks {
 
+	private static $showAds = null;
+
 	private static function shouldShowAds( $user, $title, $request = null ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( !is_null( self::$showAds ) ) {
+			return self::$showAds;
+		} else {
+			$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		if ( $title->isSpecialPage() ) {
-			$blacklistedPages = $config->get( 'LiquipediaAdsBlacklistedPages' );
-			foreach ( $blacklistedPages as $page ) {
-				if ( $title->isSpecial( $page ) ) { // Special pages that should never have ads
-					return false;
+			if ( $title->isSpecialPage() ) {
+				$blacklistedPages = $config->get( 'LiquipediaAdsBlacklistedPages' );
+				foreach ( $blacklistedPages as $page ) {
+					if ( $title->isSpecial( $page ) ) {
+						// Special pages that should never have ads
+						self::$showAds = false;
+						return false;
+					}
 				}
 			}
-		}
 
-		if ( $user->isAnon() ) { // Anonymous people get ads
+			if ( $user->isAnon() ) {
+				// Anonymous people get ads
+				self::$showAds = true;
+				return true;
+			} elseif ( !is_null( $request ) && in_array( $request->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] ) ) {
+				// No ads on certain utility pages for logged in users
+				self::$showAds = false;
+				return false;
+			} elseif ( $title->isSpecialPage() ) {
+				$whitelistedPages = $config->get( 'LiquipediaAdsWhitelistedPages' );
+				foreach ( $whitelistedPages as $page ) {
+					if ( $title->isSpecial( $page ) ) {
+						// Special pages that should always have ads
+						self::$showAds = true;
+						return true;
+					}
+				}
+				// Other special pages should not have ads when logged in, since they are mostly used for editors
+				self::$showAds = false;
+				return false;
+			}
+
+			// If no special case has occured, show ads
+			self::$showAds = true;
 			return true;
-		} elseif ( !is_null( $request ) && in_array( $request->getVal( 'action', 'view' ), [ 'edit', 'submit', 'delete', 'protect' ] ) ) { // No ads on certain utility pages for logged in users
-			return false;
-		} elseif ( $title->isSpecialPage() ) {
-			$whitelistedPages = $config->get( 'LiquipediaAdsWhitelistedPages' );
-			foreach ( $whitelistedPages as $page ) {
-				if ( $title->isSpecial( $page ) ) { // Special pages that should always have ads
-					return true;
-				}
-			}
-			return false; // Other special pages should not have ads when logged in, since they are mostly used for editors
 		}
-
-		return true;
 	}
 
 	public static function onBeforePageDisplay( $out, $skin ) {
