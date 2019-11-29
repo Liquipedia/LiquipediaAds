@@ -78,7 +78,7 @@
 	"config": {
 		"LiquipediaAdsWhitelistedPages": {
 			"value": [
-				"StreamPage"
+				"Stream"
 			],
 			"path": false,
 			"description": "List of special pages that are whitelisted for ads",
