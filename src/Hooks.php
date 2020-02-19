@@ -157,6 +157,7 @@ class Hooks {
 			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 				self::setAdboxHeading( $parser->getOutput()->getSections() );
+				$sectionContent .= '<!--' . print_r( $parser->getOutput()->getSections(), true ) . '-->';
 				$sectionContent .= '<!--' . print_r( self::$adboxHeading, true ) . '-->';
 				if ( self::$adboxHeading && !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
 					self::$hasAddedAdbox = true;
