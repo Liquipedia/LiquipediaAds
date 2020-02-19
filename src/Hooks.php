@@ -160,14 +160,6 @@ class Hooks {
 			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 				self::setAdboxHeading( $parser->getOutput()->getSections() );
-				$sectionContent .= '<!--' . print_r( array_values( array_filter( $parser->getOutput()->getSections(), function( $var ) {
-								// Only allow <h1> and <h2>
-								if ( intval( $var[ 'level' ] ) <= 2 ) {
-									return true;
-								}
-								return false;
-							} ) ), true ) . '-->';
-				$sectionContent .= '<!--' . print_r( self::$adboxHeading, true ) . '-->';
 				if ( self::$adboxHeading && !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
 					self::$hasAddedAdbox = true;
 					$adboxCode = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
