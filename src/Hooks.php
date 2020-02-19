@@ -117,6 +117,9 @@ class Hooks {
 	private static $hasAddedAdbox = false;
 
 	private static function setAdboxHeading( $pageHeadings ) {
+		if ( count( $pageHeadings ) === 0 ) {
+			return;
+		}
 		if ( is_null( self::$adboxHeading ) ) {
 			$rawHeadings = wfMessage( 'adbox-headings' )->plain();
 			$keyHeadings = explode( "\n", $rawHeadings );
