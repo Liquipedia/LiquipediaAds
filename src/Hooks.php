@@ -157,12 +157,13 @@ class Hooks {
 			// HACK: $parser->getOptions()->getEnableLimitReport() only returns true in main parsing run
 			if ( $parser->getTitle()->getNamespace() >= NS_MAIN && $parser->getOptions()->getEnableLimitReport() ) {
 				self::setAdboxHeading( $parser->getOutput()->getSections() );
+				$sectionContent .= '<!--' . print_r( self::$adboxHeading, true ) . '-->';
 				if ( self::$adboxHeading && !self::$hasAddedAdbox && strpos( $sectionContent, 'id="' . self::$adboxHeading[ 'anchor' ] . '"' ) !== false ) {
 					self::$hasAddedAdbox = true;
 					$adboxCode = '<div class="content-ad navigation-not-searchable">' . AdCode::get( '728x90_BTF' ) . '</div>';
 					preg_match( '/<(h[1-6])/', $sectionContent, $matches );
 					$headingType = $matches[ 1 ];
-					$sectionContent = preg_replace( '(<\/' . $headingType . '>)', '</' . $headingType . '>' . "\n" . $adboxCode . "\n", $sectionContent, 1 ) . '<!--' . print_r( self::$adboxHeading, true ) . '-->';
+					$sectionContent = preg_replace( '(<\/' . $headingType . '>)', '</' . $headingType . '>' . "\n" . $adboxCode . "\n", $sectionContent, 1 );
 				}
 			}
 		}
