@@ -130,7 +130,7 @@ class Hooks {
 				} ) );
 			foreach ( $keyHeadings as $keyHeading ) {
 				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
-					if ( trim( $keyHeading, '* ' ) === $filteredPageHeading[ 'line' ] ) {
+					if ( trim( $keyHeading, '* ' ) === trim( $filteredPageHeading[ 'line' ] ) ) {
 						self::$adboxHeading = [
 							'text' => $filteredPageHeading[ 'line' ],
 							'anchor' => $filteredPageHeading[ 'anchor' ],
