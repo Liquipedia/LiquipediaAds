@@ -1,0 +1,17 @@
+{
+	"extends": "stylelint-config-wikimedia",
+	"rules": {
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": [
+					"if",
+					"else",
+					"include"
+				]
+			}
+		],
+		"color-hex-length": "long",
+		"unit-blacklist": null
+	}
+}
