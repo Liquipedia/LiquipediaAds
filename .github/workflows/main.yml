@@ -4,9 +4,7 @@ on: [ push, pull_request ]
 
 jobs:
   test-php:
-    runs: 
-      using: 'docker'
-      image: 'docker://php:7.3'
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
