@@ -7,8 +7,8 @@
 	"license": "NOASSERTION",
 	"private": true,
 	"devDependencies": {
-		"eslint-config-wikimedia": "^0.15.0",
-		"stylelint-config-wikimedia": "^0.7.0"
+		"eslint-config-wikimedia": "*",
+		"stylelint-config-wikimedia": "*"
 	},
 	"scripts": {
 		"test": "eslint resources/scripts/ && stylelint resources/styles/",
