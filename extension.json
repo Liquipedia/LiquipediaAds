@@ -1,6 +1,6 @@
 {
 	"name": "LiquipediaAds",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]"
 	],
@@ -17,50 +17,50 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"Liquipedia\\Ads\\": "src/"
+		"Liquipedia\\LiquipediaAds\\": "src/"
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"Liquipedia\\Ads\\Hooks::onBeforePageDisplay"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBeforePageDisplay"
 		],
 		"BruinenBodyFirst": [
-			"Liquipedia\\Ads\\Hooks::onBruinenBodyFirst"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenBodyFirst"
 		],
 		"BruinenEndCode": [
-			"Liquipedia\\Ads\\Hooks::onBruinenEndCode"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenEndCode"
 		],
 		"BruinenSidebar": [
-			"Liquipedia\\Ads\\Hooks::onBruinenSidebar"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenSidebar"
 		],
 		"BruinenStartCode": [
-			"Liquipedia\\Ads\\Hooks::onBruinenStartCode"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenStartCode"
 		],
 		"BruinenTop": [
-			"Liquipedia\\Ads\\Hooks::onBruinenTop"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenTop"
 		],
 		"LiquiFlowBodyFirst": [
-			"Liquipedia\\Ads\\Hooks::onBruinenBodyFirst"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenBodyFirst"
 		],
 		"LiquiFlowEndCode": [
-			"Liquipedia\\Ads\\Hooks::onBruinenEndCode"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenEndCode"
 		],
 		"LiquiFlowSidebar": [
-			"Liquipedia\\Ads\\Hooks::onBruinenSidebar"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenSidebar"
 		],
 		"LiquiFlowStartCode": [
-			"Liquipedia\\Ads\\Hooks::onBruinenStartCode"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenStartCode"
 		],
 		"LiquiFlowTop": [
-			"Liquipedia\\Ads\\Hooks::onBruinenTop"
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenTop"
 		],
 		"ParserAfterTidy": [
-			"Liquipedia\\Ads\\Hooks::onParserAfterTidy"
+			"Liquipedia\\LiquipediaAds\\Hooks::onParserAfterTidy"
 		],
 		"ParserFirstCallInit": [
-			"Liquipedia\\Ads\\Hooks::onParserFirstCallInit"
+			"Liquipedia\\LiquipediaAds\\Hooks::onParserFirstCallInit"
 		],
 		"ParserSectionCreate": [
-			"Liquipedia\\Ads\\Hooks::onParserSectionCreate"
+			"Liquipedia\\LiquipediaAds\\Hooks::onParserSectionCreate"
 		]
 	},
 	"ResourceModules": {

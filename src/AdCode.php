@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\Ads;
+namespace Liquipedia\LiquipediaAds;
 
 class AdCode {
 

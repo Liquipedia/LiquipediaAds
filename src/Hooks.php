@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\Ads;
+namespace Liquipedia\LiquipediaAds;
 
 use MediaWiki\MediaWikiServices;
 use OutputPage;
@@ -160,7 +160,7 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onParserFirstCallInit( Parser &$parser ) {
-		$parser->setHook( 'adbox', 'Liquipedia\\Ads\\Hooks::adboxRender' );
+		$parser->setHook( 'adbox', 'Liquipedia\\LiquipediaAds\\Hooks::adboxRender' );
 		return true;
 	}
 
@@ -197,7 +197,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-			} ) );
+				} ) );
 			foreach ( $keyHeadings as $keyHeading ) {
 				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
 					if ( trim( $keyHeading, '* ' ) === trim( $filteredPageHeading[ 'line' ] ) ) {
