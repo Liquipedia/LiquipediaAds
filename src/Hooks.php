@@ -197,7 +197,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-				} ) );
+			} ) );
 			foreach ( $keyHeadings as $keyHeading ) {
 				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
 					if ( trim( $keyHeading, '* ' ) === trim( $filteredPageHeading[ 'line' ] ) ) {
