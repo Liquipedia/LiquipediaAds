@@ -168,7 +168,7 @@ class Hooks {
 	 * Render adbox
 	 * @param string $input
 	 * @param array $args
-	 * @param PArser $parser
+	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @return array
 	 */
