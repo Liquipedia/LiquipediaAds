@@ -117,6 +117,7 @@ class Hooks {
 	 * @param Skin $skin
 	 * @param string &$value
 	 * @return bool
+	 * @todo This should be replaced with a `SkinAfterBottomScripts` solution
 	 */
 	public static function onBruinenEndCode( $includeDir, $skin, &$value ) {
 		ob_start();
@@ -197,7 +198,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-			} ) );
+				} ) );
 			foreach ( $keyHeadings as $keyHeading ) {
 				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
 					if ( trim( $keyHeading, '* ' ) === trim( $filteredPageHeading[ 'line' ] ) ) {
