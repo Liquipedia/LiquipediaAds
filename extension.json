@@ -1,6 +1,6 @@
 {
 	"name": "LiquipediaAds",
-	"version": "1.5.2",
+	"version": "1.6.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]"
 	],
@@ -26,9 +26,6 @@
 		"BruinenBodyFirst": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenBodyFirst"
 		],
-		"BruinenEndCode": [
-			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenEndCode"
-		],
 		"BruinenSidebar": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenSidebar"
 		],
@@ -40,9 +37,6 @@
 		],
 		"LiquiFlowBodyFirst": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenBodyFirst"
-		],
-		"LiquiFlowEndCode": [
-			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenEndCode"
 		],
 		"LiquiFlowSidebar": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenSidebar"
@@ -61,6 +55,9 @@
 		],
 		"ParserSectionCreate": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onParserSectionCreate"
+		],
+		"SkinAfterBottomScripts": [
+			"Liquipedia\\LiquipediaAds\\Hooks::onSkinAfterBottomScripts"
 		]
 	},
 	"ResourceModules": {

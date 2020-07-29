@@ -113,18 +113,11 @@ class Hooks {
 	}
 
 	/**
-	 * @param string $includeDir
 	 * @param Skin $skin
-	 * @param string &$value
-	 * @return bool
-	 * @todo This should be replaced with a `SkinAfterBottomScripts` solution
+	 * @param string &$text
 	 */
-	public static function onBruinenEndCode( $includeDir, $skin, &$value ) {
-		ob_start();
-		include $includeDir . '/../TeamLiquidFooter.inc';
-		$value .= ob_get_contents();
-		ob_end_clean();
-		return true;
+	public static function onSkinAfterBottomScripts( $skin, &$text ) {
+		$text .= AdCode::getAnalytics();
 	}
 
 	/**
@@ -192,13 +185,18 @@ class Hooks {
 			$rawHeadings = wfMessage( 'adbox-headings' )->plain();
 			$keyHeadings = explode( "\n", $rawHeadings );
 			// Filter headings
-			$filteredPageHeadings = array_values( array_filter( $pageHeadings, function ( $var ) {
+			$filteredPageHeadings = array_values(
+				array_filter(
+					$pageHeadings,
+					function ( $var ) {
 					// Only allow <h1> and <h2>
 					if ( intval( $var[ 'level' ] ) <= 2 ) {
 						return true;
 					}
 					return false;
-				} ) );
+					}
+				)
+			);
 			foreach ( $keyHeadings as $keyHeading ) {
 				foreach ( $filteredPageHeadings as $filteredPageHeading ) {
 					if ( trim( $keyHeading, '* ' ) === trim( $filteredPageHeading[ 'line' ] ) ) {
