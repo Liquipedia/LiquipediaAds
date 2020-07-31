@@ -118,6 +118,7 @@ class Hooks {
 	 */
 	public static function onSkinAfterBottomScripts( $skin, &$text ) {
 		$text .= AdCode::getAnalytics();
+		$text .= AdCode::get( 'footer' );
 	}
 
 	/**
@@ -194,7 +195,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-					}
+				}
 				)
 			);
 			foreach ( $keyHeadings as $keyHeading ) {
