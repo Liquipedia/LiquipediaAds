@@ -195,7 +195,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-				}
+					}
 				)
 			);
 			foreach ( $keyHeadings as $keyHeading ) {
