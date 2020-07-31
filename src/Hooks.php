@@ -117,8 +117,8 @@ class Hooks {
 	 * @param string &$text
 	 */
 	public static function onSkinAfterBottomScripts( $skin, &$text ) {
-		$text .= AdCode::getAnalytics();
 		$text .= AdCode::get( 'footer' );
+		$text .= AdCode::getAnalytics();
 	}
 
 	/**
