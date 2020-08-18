@@ -56,6 +56,7 @@ h6 + .content-ad {
 	background: transparent;
 	padding: 0;
 }
+
 /* stylelint-disable-next-line selector-max-id */
 #ncmp-consent-link:hover button {
 	text-decoration: underline;
