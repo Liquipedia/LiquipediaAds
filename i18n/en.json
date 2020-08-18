@@ -7,5 +7,7 @@
 	"liquipediaads-desc": "Allows to put ads on Liquipedia. The headings for the content adboxes can be defined in [[MediaWiki:Adbox-headings]].",
 
 	"liquipediaads-config-liquipediaadswhitelistedpages-desc": "List of special pages that are whitelisted for ads",
-	"liquipediaads-config-liquipediaadsblacklistedpages-desc": "List of special pages that are blacklisted for ads"
+	"liquipediaads-config-liquipediaadsblacklistedpages-desc": "List of special pages that are blacklisted for ads",
+
+	"liquipediaads-cookie-preferences-button": ""
 }

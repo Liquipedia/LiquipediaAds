@@ -7,6 +7,8 @@
 	text-align: center;
 	margin: 7px 0 5px 0;
 	position: relative;
+	/* report ad link */
+	padding-bottom: 20px;
 }
 
 /* At the top over the content */
@@ -16,6 +18,8 @@
 	width: 100%;
 	margin-top: 10px;
 	min-height: 90px;
+	/* report ad link */
+	padding-bottom: 20px;
 }
 
 @media ( max-width: 767px ) {
@@ -30,6 +34,8 @@
 	clear: left;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	/* report ad link */
+	padding-bottom: 20px;
 }
 
 h1 + .content-ad,
@@ -39,4 +45,18 @@ h4 + .content-ad,
 h5 + .content-ad,
 h6 + .content-ad {
 	margin-top: 0;
+}
+
+/* Footer button */
+/* stylelint-disable-next-line selector-max-id */
+#ncmp-consent-link button {
+	color: inherit;
+	font-size: inherit;
+	border: 0;
+	background: transparent;
+	padding: 0;
+}
+/* stylelint-disable-next-line selector-max-id */
+#ncmp-consent-link:hover button {
+	text-decoration: underline;
 }

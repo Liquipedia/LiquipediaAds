@@ -23,6 +23,9 @@
 		"BeforePageDisplay": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBeforePageDisplay"
 		],
+		"BruinenAdditionalAboutItems": [
+			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenAdditionalAboutItems"
+		],
 		"BruinenBodyFirst": [
 			"Liquipedia\\LiquipediaAds\\Hooks::onBruinenBodyFirst"
 		],

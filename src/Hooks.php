@@ -260,4 +260,17 @@ class Hooks {
 		}
 	}
 
+	/**
+	 * @param array &$additionalAboutItems
+	 */
+	public static function onBruinenAdditionalAboutItems( &$additionalAboutItems ) {
+		$additionalAboutItems[] = [
+			'href' => '#',
+			'target' => '',
+			'message' => 'liquipediaads-cookie-preferences-button',
+			'id' => 'ncmp-consent-link',
+			# 'style' => 'display: none;',
+		];
+	}
+
 }
