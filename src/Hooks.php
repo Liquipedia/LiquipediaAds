@@ -117,7 +117,9 @@ class Hooks {
 	 * @param string &$text
 	 */
 	public static function onSkinAfterBottomScripts( $skin, &$text ) {
-		$text .= AdCode::get( 'footer' );
+		if ( self::shouldShowAds( $skin->getUser(), $skin->getTitle(), $skin->getRequest() ) ) {
+			$text .= AdCode::get( 'footer' );
+		}
 		$text .= AdCode::getAnalytics();
 	}
 
