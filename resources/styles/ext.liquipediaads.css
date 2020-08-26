@@ -55,6 +55,7 @@ h6 + .content-ad {
 	border: 0;
 	background: transparent;
 	padding: 0;
+	text-align: left;
 }
 
 /* stylelint-disable-next-line selector-max-id */
