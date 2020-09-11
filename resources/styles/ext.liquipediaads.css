@@ -62,3 +62,9 @@ h6 + .content-ad {
 #ncmp-consent-link:hover button {
 	text-decoration: underline;
 }
+
+/* Report link */
+.report-link {
+	/* stylelint-disable-next-line declaration-no-important */
+	z-index: 500 !important;
+}
