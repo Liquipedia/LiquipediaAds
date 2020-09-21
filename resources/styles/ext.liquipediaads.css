@@ -36,6 +36,7 @@
 	margin-top: 10px;
 	/* report ad link */
 	padding-bottom: 20px;
+	overflow: hidden;
 }
 
 h1 + .content-ad,
