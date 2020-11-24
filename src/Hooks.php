@@ -174,7 +174,14 @@ class Hooks {
 		return [ trim( $code ), 'markerType' => 'nowiki' ];
 	}
 
+	/**
+	 * @var array|bool|null $adboxHeading Heading for adbox or false
+	 */
 	private static $adboxHeading = null;
+
+	/**
+	 * @var bool $hasAddedAdbox Has an adbox been added already?
+	 */
 	private static $hasAddedAdbox = false;
 
 	/**
@@ -197,7 +204,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-				}
+					}
 				)
 			);
 			foreach ( $keyHeadings as $keyHeading ) {
