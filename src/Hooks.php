@@ -197,7 +197,7 @@ class Hooks {
 						return true;
 					}
 					return false;
-					}
+				}
 				)
 			);
 			foreach ( $keyHeadings as $keyHeading ) {
@@ -272,6 +272,12 @@ class Hooks {
 			'message' => 'liquipediaads-cookie-preferences-button',
 			'id' => 'ncmp-consent-link',
 			# 'style' => 'display: none;',
+		];
+		$additionalAboutItems[] = [
+			'href' => '#',
+			'target' => '',
+			'message' => 'liquipediaads-cookie-preferences-button2',
+			'data-ccpa-link' => '1',
 		];
 	}
 

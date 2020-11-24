@@ -9,5 +9,6 @@
 	"liquipediaads-config-liquipediaadswhitelistedpages-desc": "List of special pages that are whitelisted for ads",
 	"liquipediaads-config-liquipediaadsblacklistedpages-desc": "List of special pages that are blacklisted for ads",
 
-	"liquipediaads-cookie-preferences-button": ""
+	"liquipediaads-cookie-preferences-button": "",
+	"liquipediaads-cookie-preferences-button2": ""
 }
