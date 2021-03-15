@@ -11,5 +11,5 @@ MediaWiki Extension for Liquipedia, allows to put ads.
 wfLoadExtension( 'LiquipediaAds' );
 ```
 
-#Notice
+# Notice
 This extension has been archived and will not get any further updates
